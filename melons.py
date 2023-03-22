@@ -44,8 +44,19 @@ class InternationalMelonOrder(AbstractMelonOrder):
         #self.qty = qty
     # country_code = country_code
         #self.shipped = False
+
     order_type = "international"
     tax = 0.17
+
+        
+    def __init__(self,species,qty,country_code):
+       
+        super().__init__(species, qty)  # [calls the __init__ on the parent]
+        self.country_code = country_code
+
+    def __repr__(self):
+        return f"< species = {self.species} qty = {self.qty} shipped = {self.shipped} order_type = {self.order_type} tax = {self.tax} country_code = {self.country_code}>"
+
 
     def get_total(self):
         """Calculate price, including tax."""
